@@ -202,6 +202,8 @@ The specific license:
 * L<Software::License::Sun>
 * L<Software::License::Zlib>
 
+A command-line tool that uses Software::License: L<App::Software::License>
+
 =cut
 
 1;
