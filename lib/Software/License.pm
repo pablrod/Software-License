@@ -71,7 +71,14 @@ under which the software is distributed.
 
 =cut
 
-sub notice { shift->_fill_in('NOTICE') }
+sub notice { 
+  my ($self) = @_; 
+  return join "\n", $self->copyright . $self->short_notice;
+}
+
+sub copyright { shift->_fill_in('COPYRIGHT') }
+
+sub short_notice { shift->_fill_in('SHORTNOTICE') }
 
 =method license
 
@@ -90,7 +97,7 @@ notice.
 
 sub fulltext {
   my ($self) = @_;
-  return join "\n", $self->notice, $self->license;
+  return join "\n", $self->copyright, $self->license;
 }
 
 =method version
@@ -207,9 +214,10 @@ The specific license:
 1;
 
 __DATA__
-__NOTICE__
-This software is Copyright (c) {{$self->year}} by {{$self->_dotless_holder}}.
+__COPYRIGHT__
+Copyright (c) {{$self->year}} by {{$self->_dotless_holder}}.
 
+__SHORTNOTICE__
 This is free software, licensed under:
 
   {{ $self->name }}
